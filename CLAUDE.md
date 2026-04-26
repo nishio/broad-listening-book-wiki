@@ -6,8 +6,16 @@
 
 - `raw/` — 書籍の原稿（読み取り専用、変更不可）
 - `wiki/` — Wikiページ（LLMが生成・更新する）
-- `index.md` — Wikiページの一覧とカテゴリ別索引
+- `wiki/index.md` — Wikiページの一覧とカテゴリ別索引（Quartzサイトのトップ）
+- `content/` — `wiki/` から自動生成される（Quartzのビルド入力）。**直接編集しない**
+- `scripts/resolve-links.py` — `wiki/` → `content/` 変換と `[[wikilink]]` 解決
+- `.github/workflows/deploy.yml` — GitHub Pages への自動デプロイ
 - `log.md` — 作業ログ（時系列）
+
+## デプロイ
+
+`main` に push すると GitHub Actions が `wiki/` をビルドして `https://nishio.github.io/broad-listening-book-wiki/` に公開する。
+ローカルプレビューは `pnpm serve`（または `python3 scripts/resolve-links.py && npx quartz build --serve`）。
 
 ## Wikiページの規約
 
@@ -49,5 +57,5 @@
 ## 運用ルール
 
 - 原稿（raw/）の内容に基づいて記述する
-- 新しいページを作成したらindex.mdを更新する
-- 作業内容はlog.mdに記録する
+- 新しいページを作成したら `wiki/index.md` を更新する
+- 作業内容は log.md に記録する

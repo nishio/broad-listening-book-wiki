@@ -1,0 +1,16 @@
+.DS_Store
+node_modules/
+public/
+prof/
+tsconfig.tsbuildinfo
+.obsidian/
+.quartz-cache/
+private/
+.replit
+replit.nix
+
+# 書籍原稿（公開不可）
+raw/
+
+# ローカルClaude設定
+.claude/settings.local.json
